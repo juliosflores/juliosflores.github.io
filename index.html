@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julio César Flores – Currículo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0d1b2a;
+      --steel: #1b2d40;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f5f0e8;
+      --muted: #8a9ab0;
+      --white: #ffffff;
+      --section-gap: 3rem;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--cream);
+      color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 5rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 380px; height: 380px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.18) 0%, transparent 70%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -40px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 70%);
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 2px;
+      margin-bottom: 1.4rem;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .hero-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.85rem;
+      color: #b0c0d0;
+    }
+
+    .contact-item svg {
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    .contact-item a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact-item a:hover { color: var(--gold-light); }
+
+    /* ── LAYOUT ── */
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 3rem 4rem;
+    }
+
+    .main-col { min-width: 0; }
+    .side-col { min-width: 0; }
+
+    /* ── SECTION TITLES ── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .section-label span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: var(--navy);
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+    }
+
+    .section-icon {
+      width: 28px; height: 28px;
+      background: var(--navy);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .section-icon svg { color: var(--gold); }
+
+    /* ── OBJECTIVE ── */
+    .objective-text {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #2a3d52;
+      border-left: 3px solid var(--gold);
+      padding-left: 1.2rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience-block {
+      margin-bottom: 2.2rem;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .exp-role {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .exp-period {
+      font-size: 0.75rem;
+      color: var(--muted);
+      white-space: nowrap;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-top: 0.15rem;
+    }
+
+    .exp-org {
+      font-size: 0.82rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .exp-section-title {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0.9rem 0 0.5rem;
+    }
+
+    .exp-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .exp-list li {
+      font-size: 0.87rem;
+      color: #3a4f65;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    .exp-list li::before {
+      content: '▸';
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+      font-size: 0.7rem;
+      top: 0.15rem;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-item {
+      margin-bottom: 1.3rem;
+      padding-bottom: 1.3rem;
+      border-bottom: 1px solid #e0d8cc;
+    }
+    .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .edu-degree {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--navy);
+      margin-bottom: 0.15rem;
+    }
+
+    .edu-institution {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* ── SKILLS (SIDEBAR) ── */
+    .skill-group {
+      margin-bottom: 1.8rem;
+    }
+
+    .skill-group-title {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-pill {
+      display: inline-block;
+      background: var(--navy);
+      color: #c5d5e5;
+      font-size: 0.78rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      margin: 0.25rem 0.2rem 0.25rem 0;
+      font-weight: 400;
+    }
+
+    /* ── INFO CARD ── */
+    .info-card {
+      background: var(--navy);
+      color: #b0c5d8;
+      border-radius: 10px;
+      padding: 1.5rem;
+      font-size: 0.83rem;
+      line-height: 1.75;
+      margin-bottom: 1.8rem;
+    }
+
+    .info-card strong {
+      color: var(--gold);
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .info-card ul {
+      list-style: none;
+    }
+
+    .info-card ul li {
+      padding-left: 0.9rem;
+      position: relative;
+      margin-bottom: 0.3rem;
+    }
+
+    .info-card ul li::before {
+      content: '·';
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+    }
+
+    /* ── YEARS BADGE ── */
+    .years-badge {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: linear-gradient(135deg, var(--gold), #a07830);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.8rem;
+      color: var(--navy);
+    }
+
+    .years-badge .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .years-badge .label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* ── DIVIDER ── */
+    .section-gap { margin-top: var(--section-gap); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .page {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1.2rem 4rem;
+      }
+      .side-col { order: -1; }
+      .hero { padding: 3.5rem 1.2rem 3rem; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-inner { animation: fadeUp 0.7s ease both; }
+    .main-col   { animation: fadeUp 0.7s 0.15s ease both; }
+    .side-col   { animation: fadeUp 0.7s 0.3s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="badge">Currículo Profissional</div>
+    <h1>Julio César<br/><span>Flores Pfeifer Jr.</span></h1>
+    <p class="hero-subtitle">Porto Alegre – RS &nbsp;|&nbsp; Brigada Militar do Rio Grande do Sul</p>
+    <div class="hero-contacts">
+      <div class="contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (51) 99697-9032
+      </div>
+      <div class="contact-item">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:julio-flores@bm.rs.gov.br">julio-flores@bm.rs.gov.br</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══ CONTENT ══════════════════════════════════ -->
+<div class="page">
+
+  <!-- ── MAIN COLUMN ── -->
+  <main class="main-col">
+
+    <!-- Objetivo -->
+    <section>
+      <div class="section-label">
+        <div class="section-icon">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <span>Objetivo</span>
+      </div>
+      <p class="objective-text">
+        Atuar em funções que permitam aplicar a experiência adquirida na Brigada Militar,
+        especialmente nas áreas operacional e administrativa, contribuindo com organização,
+        gestão de pessoal e eficiência no serviço público.
+      </p>
+    </section>
+
+    <!-- Experiência -->
+    <section class="section-gap">
+      <div class="section-label">
+        <div class="section-icon">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+        </div>
+        <span>Experiência Profissional</span>
+      </div>
+
+      <div class="experience-block">
+        <div class="exp-header">
+          <div class="exp-role">Soldado PM</div>
+          <div class="exp-period">SET 2012 – ATUAL</div>
+        </div>
+        <div class="exp-org">Brigada Militar do Rio Grande do Sul</div>
+
+        <div class="exp-section-title">Atuação Operacional</div>
+        <ul class="exp-list">
+          <li>~5 anos de policiamento ostensivo e patrulhamento preventivo</li>
+          <li>Atendimento direto de ocorrências em viatura</li>
+          <li>Atuação em situações de alta pressão com controle emocional e tomada de decisão</li>
+        </ul>
+
+        <div class="exp-section-title">Atuação Administrativa – 19º BPM</div>
+        <ul class="exp-list">
+          <li>Setor P1 – gestão de pessoal do efetivo</li>
+          <li>Seção de Justiça e Sargenteação do Batalhão</li>
+          <li>Elaboração e controle de escalas de serviço de todo o efetivo</li>
+          <li>Controle de afastamentos, faltas e alterações de serviço</li>
+          <li>Confecção, análise e controle de mapas administrativos</li>
+          <li>Gestão documental e suporte a processos internos</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Formação -->
+    <section class="section-gap">
+      <div class="section-label">
+        <div class="section-icon">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <span>Formação Acadêmica</span>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-degree">Ensino Médio Completo</div>
+        <div class="edu-institution">Escola Rainha do Brasil</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">Bacharelado em Ciência da Computação <em style="color:var(--muted);font-style:normal;font-size:0.8rem;">(incompleto — 2º sem.)</em></div>
+        <div class="edu-institution">PUC-RS – Pontifícia Universidade Católica do Rio Grande do Sul &nbsp;|&nbsp; 2012</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">Bacharelado em Educação Física <em style="color:var(--muted);font-style:normal;font-size:0.8rem;">(incompleto — 4º sem.)</em></div>
+        <div class="edu-institution">FADERGS &nbsp;|&nbsp; 2016</div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="side-col">
+
+    <!-- Badge anos de serviço -->
+    <div class="years-badge">
+      <div class="num">13+</div>
+      <div class="label">anos de serviço<br/>público</div>
+    </div>
+
+    <!-- Informações complementares -->
+    <div class="info-card">
+      <strong>Destaques</strong>
+      <ul>
+        <li>Mais de 10 anos no serviço público</li>
+        <li>Gestão de efetivo em nível de batalhão</li>
+        <li>Experiência operacional e administrativa</li>
+        <li>Alta capacidade de adaptação institucional</li>
+      </ul>
+    </div>
+
+    <!-- Habilidades -->
+    <div class="skill-group">
+      <div class="section-label">
+        <div class="section-icon">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span>Habilidades</span>
+      </div>
+      <div>
+        <span class="skill-pill">Gestão de pessoal</span>
+        <span class="skill-pill">Escalas de serviço</span>
+        <span class="skill-pill">Controle de efetivo</span>
+        <span class="skill-pill">Organização administrativa</span>
+        <span class="skill-pill">Gestão documental</span>
+        <span class="skill-pill">Trabalho em equipe</span>
+        <span class="skill-pill">Comunicação</span>
+        <span class="skill-pill">Disciplina</span>
+        <span class="skill-pill">Tomada de decisão</span>
+        <span class="skill-pill">Informática</span>
+      </div>
+    </div>
+
+    <!-- Contato rápido -->
+    <div class="skill-group" style="margin-top:0.5rem;">
+      <div class="section-label">
+        <div class="section-icon">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <span>Contato</span>
+      </div>
+      <div style="font-size:0.83rem;color:#3a4f65;line-height:2;">
+        📱 (51) 99697-9032<br/>
+        ✉️ julio-flores@bm.rs.gov.br<br/>
+        📍 Porto Alegre – RS
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<footer>
+  Julio César Flores Pfeifer Jr. &nbsp;·&nbsp; Porto Alegre, RS &nbsp;·&nbsp; 2025
+</footer>
+
+</body>
+</html>
