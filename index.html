@@ -390,9 +390,126 @@
     .hero-inner { animation: fadeUp 0.7s ease both; }
     .main-col   { animation: fadeUp 0.7s 0.15s ease both; }
     .side-col   { animation: fadeUp 0.7s 0.3s ease both; }
+
+    /* ── FIXED BUTTONS ── */
+    .fixed-buttons {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.2rem;
+      z-index: 1000;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    /* ── PDF BUTTON ── */
+    .pdf-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: none;
+      border-radius: 6px;
+      padding: 0.55rem 1.1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .pdf-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+
+    .pdf-btn svg { flex-shrink: 0; }
+
+    /* ── WHATSAPP ICON IN CONTACT ── */
+    .wa-icon { color: #25D366; flex-shrink: 0; }
+
+    /* ── PRINT STYLES ── */
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      .fixed-buttons { display: none !important; }
+
+      body {
+        background: var(--cream) !important;
+        margin: 0;
+        padding: 0;
+      }
+
+      .hero {
+        background: var(--navy) !important;
+        padding: 3rem 2rem 2.5rem !important;
+      }
+
+      .hero::before, .hero::after { display: none; }
+
+      .page {
+        max-width: 100% !important;
+        padding: 2rem 2rem 3rem !important;
+        display: grid !important;
+        grid-template-columns: 1fr 260px !important;
+        gap: 2rem 3rem !important;
+      }
+
+      .hero-inner, .main-col, .side-col {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      footer {
+        background: var(--navy) !important;
+      }
+
+      .section-gap { margin-top: 2rem !important; }
+
+      .years-badge {
+        background: linear-gradient(135deg, var(--gold), #a07830) !important;
+      }
+
+      .info-card {
+        background: var(--navy) !important;
+      }
+
+      .skill-pill {
+        background: var(--navy) !important;
+      }
+
+      .section-icon {
+        background: var(--navy) !important;
+      }
+
+      a { text-decoration: none; }
+
+      @page {
+        margin: 0.6cm 0.8cm;
+        size: A4 portrait;
+      }
+    }
   </style>
 </head>
 <body>
+
+<!-- ══ FIXED BUTTONS ══════════════════════════════ -->
+<div class="fixed-buttons">
+  <button class="pdf-btn" onclick="window.print()">
+    <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path d="M6 9V2h12v7"/><rect x="6" y="17" width="12" height="5"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+    </svg>
+    Salvar PDF
+  </button>
+</div>
 
 <!-- ══ HERO ══════════════════════════════════════ -->
 <header class="hero">
@@ -403,7 +520,8 @@
     <div class="hero-contacts">
       <div class="contact-item">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        (51) 99697-9032
+        <svg class="wa-icon" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.139 1.535 5.875L0 24l6.278-1.519A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.002-1.368l-.358-.214-3.724.9.937-3.618-.234-.372A9.818 9.818 0 1 1 12 21.818z"/></svg>
+        <a href="https://wa.me/5551996979032" target="_blank" rel="noopener">(51) 99697-9032</a>
       </div>
       <div class="contact-item">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -545,7 +663,7 @@
         <span>Contato</span>
       </div>
       <div style="font-size:0.83rem;color:#3a4f65;line-height:2;">
-        📱 (51) 99697-9032<br/>
+        <svg style="vertical-align:middle;margin-right:0.3rem;" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.21h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><svg class="wa-icon" style="vertical-align:middle;margin-right:0.3rem;" width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.136.563 4.139 1.535 5.875L0 24l6.278-1.519A11.944 11.944 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.002-1.368l-.358-.214-3.724.9.937-3.618-.234-.372A9.818 9.818 0 1 1 12 21.818z"/></svg><a href="https://wa.me/5551996979032" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">(51) 99697-9032</a><br/>
         ✉️ julio-flores@bm.rs.gov.br<br/>
         📍 Porto Alegre – RS
       </div>
